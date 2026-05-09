@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Text-to-Speech Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔊 Offline Text-to-Speech Tool</h1>
+            <p class="subtitle">100% Offline - No Cloud APIs Required</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Text Input Section -->
+            <section class="input-section">
+                <label for="textInput" class="section-title">📝 Enter Text to Speak</label>
+                <textarea 
+                    id="textInput" 
+                    placeholder="Paste or type your text here... (English or Urdu supported)"
+                    rows="8"
+                    class="text-input"
+                ></textarea>
+                <div class="input-info">
+                    <span id="charCount">0 characters</span>
+                </div>
+            </section>
+
+            <!-- Voice Selection -->
+            <section class="voice-section">
+                <label for="voiceSelect" class="section-title">🎤 Select Voice</label>
+                <select id="voiceSelect" class="voice-select">
+                    <option value="">Loading voices...</option>
+                </select>
+                <button id="testVoiceBtn" class="btn btn-secondary">Test Voice</button>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="button-group">
+                    <button id="playBtn" class="btn btn-primary">▶ Play</button>
+                    <button id="stopBtn" class="btn btn-danger">⏹ Stop</button>
+                </div>
+            </section>
+
+            <!-- Sliders Section -->
+            <section class="sliders-section">
+                <!-- Volume Slider -->
+                <div class="slider-group">
+                    <label for="volumeSlider" class="slider-label">
+                        <span>🔊 Volume</span>
+                        <span id="volumeValue" class="slider-value">100%</span>
+                    </label>
+                    <input 
+                        type="range" 
+                        id="volumeSlider" 
+                        min="0" 
+                        max="100" 
+                        value="100" 
+                        class="slider"
+                    >
+                </div>
+
+                <!-- Rate Slider -->
+                <div class="slider-group">
+                    <label for="rateSlider" class="slider-label">
+                        <span>⏱️ Speech Speed</span>
+                        <span id="rateValue" class="slider-value">1.0x</span>
+                    </label>
+                    <input 
+                        type="range" 
+                        id="rateSlider" 
+                        min="50" 
+                        max="300" 
+                        value="150" 
+                        class="slider"
+                    >
+                    <div class="slider-ticks">
+                        <span class="tick">0.5x</span>
+                        <span class="tick">1.0x</span>
+                        <span class="tick">2.0x</span>
+                    </div>
+                </div>
+
+                <!-- Pitch Slider -->
+                <div class="slider-group">
+                    <label for="pitchSlider" class="slider-label">
+                        <span>🎵 Pitch (Tone)</span>
+                        <span id="pitchValue" class="slider-value">1.0</span>
+                    </label>
+                    <input 
+                        type="range" 
+                        id="pitchSlider" 
+                        min="0.5" 
+                        max="2.0" 
+                        step="0.1"
+                        value="1.0" 
+                        class="slider"
+                    >
+                    <div class="slider-ticks">
+                        <span class="tick">Low (0.5)</span>
+                        <span class="tick">Normal (1.0)</span>
+                        <span class="tick">High (2.0)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Section -->
+            <section class="status-section">
+                <div class="status-box">
+                    <h3>Status</h3>
+                    <p id="statusMessage" class="status-message">Ready</p>
+                    <div class="status-indicator">
+                        <span id="statusIndicator" class="indicator idle"></span>
+                        <span id="statusText">Idle</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h3>ℹ️ Information</h3>
+                <ul class="info-list">
+                    <li><strong>Engine:</strong> pyttsx3 - 100% Offline</li>
+                    <li><strong>Languages:</strong> English (US/UK) and Urdu (if available)</li>
+                    <li><strong>Features:</strong> Volume, Speed, Pitch Control</li>
+                    <li><strong>No Cloud:</strong> All processing is local on your machine</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Offline TTS Tool | Powered by pyttsx3</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
